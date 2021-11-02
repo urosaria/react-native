@@ -49,7 +49,7 @@ const BottomTabs = ({ icons }) => {
                         <Icon_ key={index} icon={icon} />
                     :
                         <TouchableOpacity onPress={() => getActiveTab(icon.name)}>
-                            <Image source={icon.inActive} style={styles.image}></Image>
+                            <Image source={icon.inActive} style={styles.image} key={index}></Image>
                         </TouchableOpacity>
                 ))}
             </View>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         width: '100%',
         bottom: '3%',
         zIndex: 999,
-        backgroundColor: '#fff'
+        backgroundColor: '#eaeaea'
     },
     container:{
         flexDirection: 'row',

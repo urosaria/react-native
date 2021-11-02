@@ -1,15 +1,25 @@
 import React from 'react'
 import {View, Text, StyleSheet, TouchableOpacity, Image} from "react-native";
+import { firebase } from '../../firebaase'
 
-const Header = () => {
+const heandleSingout = async () => {
+    try {
+        await firebase.auth().signOut().then(() => console.log('Signed Out'))
+        console.log('Signed Out Successfully!')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const Header = ({navigation}) => {
     return (
         <View style={styles.container}>
-            <TouchableOpacity>
+            <TouchableOpacity onPressOut={heandleSingout}>
                 <Text>Instagram</Text>
             </TouchableOpacity>
 
             <View style={styles.iconContainer}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=> navigation.push('NewPostScreen')}>
                     <Image source={{
                         uri: 'https://img.icons8.com/ios/50/000000/plus-2-math.png'}}
                         style={styles.icon}
